@@ -6,3 +6,11 @@ This CLI application creates an Amazon-like storefront using MySql. The app will
 ## Customer Application
 
 ## Manager Application
+
+## Setup Instructions
+The JavaScript files reference a MySql database called Bamazon, hosted locally on my computer. To create a similar database on your machine, please reference the schema.sql file to see how the database was created. 
+
+## Run CLI Instructions
+1. Clone repo
+2. npm install
+3. node bamazon.js
