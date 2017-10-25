@@ -1,7 +1,3 @@
-// screenshots of functionality
-// read me 
-// fix decimals for prices ending in '9'
-
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 
@@ -22,9 +18,13 @@ connection.connect(function(error) {
 function start() {
 	connection.query("select * from products", function(error, result) {
         if (error) throw erorr;
+
+        console.log("\nCurrent Inventory");
+        console.log("-----------------------------");
         result.forEach(function(product) {
         	console.log(product.item_id + " | " + product.product_name + " | " + product.price);
         })
+        console.log("-----------------------------\n");
 
         inquirer.prompt([
 		    {
