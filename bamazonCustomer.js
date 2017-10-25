@@ -22,7 +22,7 @@ function start() {
         console.log("\nCurrent Inventory");
         console.log("-----------------------------");
         result.forEach(function(product) {
-        	console.log(product.item_id + " | " + product.product_name + " | " + product.price);
+        	console.log(product.item_id + " | " + product.product_name + " | $" + product.price);
         })
         console.log("-----------------------------\n");
 
@@ -38,7 +38,6 @@ function start() {
 		]).then(function(response) {
 	    	var item;
 	    	var quantity = parseInt(response.quantity);
-	    	console.log("Quantity: " + quantity);
 
 	    	for (var i = 0; i < result.length; i++) {
 	    		if (result[i].item_id === parseInt(response.item_id)) {
@@ -47,8 +46,6 @@ function start() {
 	    	}
 
 	    	connection.query("select * from products where item_id = ?", [item.item_id], function(error) {
-
-	    		console.log("Item ID: " + item.item_id);
 	 
 	    		if (item.stock_quantity > quantity) {
 	    			connection.query("update products set ? where ?", 
@@ -61,10 +58,12 @@ function start() {
 	    					}
 						]
 					);
-					console.log("--------------------------");
+
+					console.log("\n--------------------------");
 					console.log("You've successfully purchased " + quantity + " x " + item.product_name);
 					console.log("Your total is $" + (quantity * item.price));
-					console.log("--------------------------");
+					console.log("--------------------------\n");
+
 					inquirer.prompt({
 						name: "confirm",
 						type: "confirm", 
@@ -77,7 +76,8 @@ function start() {
 						}
 					})
 	    		} else {
-	    			console.log("Sorry, the available stock is " + item.stock_quantity);
+	    			console.log("\nSorry, the available stock is " + item.stock_quantity + "\n");
+
 	    			inquirer.prompt({
 	    				name: "confirm",
 	    				type: "confirm", 

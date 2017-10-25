@@ -42,9 +42,10 @@ function viewProducts() {
         if (error) {
         	return console.log(error);
         }
-        console.log("\n-----------------------------");
+        console.log("\nCurrent Inventory");
+        console.log("-----------------------------");
         result.forEach(function(product) {
-        	console.log(product.item_id + " | " + product.product_name + " | " + product.price);
+        	console.log(product.item_id + " | " + product.product_name + " | $" + product.price);
         });
         console.log("-----------------------------\n");
 
