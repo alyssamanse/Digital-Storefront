@@ -25,6 +25,5 @@ The JavaScript files reference a MySql database called Bamazon, hosted locally o
 ## Run CLI Instructions
 1. Clone repo
 2. `npm install`
-3. Replicate the database on your machine using the schema.sql file
-4. `node bamazon.js` for customer interface
+3. `node bamazon.js` for customer interface
 `node bamazonManager.js` for manager interface
